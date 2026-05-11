@@ -60,7 +60,7 @@ function getDefaultPageByRole(role) {
 function enforceRoleAccess(page) {
   const role = getCurrentRole();
   if (!role) {
-    window.location.href = 'index.html';
+    window.location.href = '/front-end-clothify/index.html';
     return;
   }
 
