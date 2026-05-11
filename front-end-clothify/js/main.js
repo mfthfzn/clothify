@@ -54,13 +54,13 @@ function getCurrentRole() {
 }
 
 function getDefaultPageByRole(role) {
-  return role === 'kasir' ? '/kasir/transactions.html' : '/admin/dashboard.html';
+  return role === 'kasir' ? 'kasir/transactions.html' : 'admin/dashboard.html';
 }
 
 function enforceRoleAccess(page) {
   const role = getCurrentRole();
   if (!role) {
-    window.location.href = '/index.html';
+    window.location.href = 'index.html';
     return;
   }
 

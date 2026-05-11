@@ -25,11 +25,11 @@ const APP_DATA = {
 };
 
 const PAGE_ROUTE = {
-  dashboard: '/admin/dashboard.html',
-  products: '/admin/products.html',
-  categories: '/admin/categories.html',
-  transactions: '/kasir/transactions.html',
-  'transaction-history': '/kasir/transaction-history.html'
+  dashboard: 'admin/dashboard.html',
+  products: 'admin/products.html',
+  categories: 'admin/categories.html',
+  transactions: 'kasir/transactions.html',
+  'transaction-history': 'kasir/transaction-history.html'
 };
 
 const ROLE_ACCESS = {
