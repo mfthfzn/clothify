@@ -16,7 +16,7 @@ public class ProductRequest {
   private String name;
 
   @NotNull(message = "Harga harus diisi")
-  @Min(value = 1, message = "Harga minimal adalah 1")
+  @Min(value = 10_000, message = "Harga minimal adalah 10.000")
   private Integer price;
 
   @NotBlank(message = "Kategori harus dipilih")

@@ -38,9 +38,9 @@ public class ProductController extends Controller {
         List<ProductResponse> products = productService.getAll();
         sendSuccess(resp, HttpServletResponse.SC_OK, "Success get all products", products);
       }
-    } catch (ProductNotFoundException e) {
+    } catch (ProductNotFoundException productNotFoundException) {
       sendError(resp, HttpServletResponse.SC_NOT_FOUND, "Failed get product", Map.of(
-              "message", e.getMessage()
+              "message", productNotFoundException.getMessage()
       ));
     }
   }
@@ -63,11 +63,11 @@ public class ProductController extends Controller {
       }
 
       productService.create(productRequest);
-      sendSuccess(resp, HttpServletResponse.SC_CREATED, "Success add product", Map.of(
+      sendSuccess(resp, HttpServletResponse.SC_OK, "Success add product", Map.of(
               "message", "Product added successfully"));
 
     } catch (ProductExistsException productExistsException) {
-      sendError(resp, HttpServletResponse.SC_CONFLICT, "Failed add product", Map.of(
+      sendError(resp, HttpServletResponse.SC_BAD_REQUEST, "Failed add product", Map.of(
               "message", productExistsException.getMessage()
       ));
     }
@@ -91,12 +91,12 @@ public class ProductController extends Controller {
       }
 
       productService.update(productRequest);
-      sendSuccess(resp, HttpServletResponse.SC_CREATED, "Success update product", Map.of(
+      sendSuccess(resp, HttpServletResponse.SC_OK, "Success update product", Map.of(
               "message", "Product updated successfully"));
 
-    } catch (ProductNotFoundException productExistsException) {
-      sendError(resp, HttpServletResponse.SC_CONFLICT, "Failed add product", Map.of(
-              "message", productExistsException.getMessage()
+    } catch (ProductNotFoundException productNotFoundException) {
+      sendError(resp, HttpServletResponse.SC_BAD_REQUEST, "Failed add product", Map.of(
+              "message", productNotFoundException.getMessage()
       ));
     }
   }
@@ -114,11 +114,11 @@ public class ProductController extends Controller {
 
     try {
       productService.remove(sku);
-      sendSuccess(resp, HttpServletResponse.SC_CREATED, "Success delete product", Map.of(
+      sendSuccess(resp, HttpServletResponse.SC_OK, "Success delete product", Map.of(
               "message", "Product deleted successfully"));
-    } catch (ProductNotFoundException productExistsException) {
-      sendError(resp, HttpServletResponse.SC_CONFLICT, "Failed add product", Map.of(
-              "message", productExistsException.getMessage()
+    } catch (ProductNotFoundException productNotFoundException) {
+      sendError(resp, HttpServletResponse.SC_BAD_REQUEST, "Failed add product", Map.of(
+              "message", productNotFoundException.getMessage()
       ));
     }
   }

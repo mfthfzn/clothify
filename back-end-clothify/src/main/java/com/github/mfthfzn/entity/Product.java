@@ -1,9 +1,9 @@
 package com.github.mfthfzn.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -30,6 +30,9 @@ public class Product {
 
   @Column(nullable = false)
   private Integer quantity;
+
+  @OneToMany(mappedBy = "product")
+  private final List<TransactionItem> transactionItems = new ArrayList<>();
 
   public Product() {
   }
