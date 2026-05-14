@@ -34,14 +34,14 @@ public class TransactionRepositoryImpl implements TransactionRepository {
   }
 
   @Override
-  public List<Transaction> findByCustomerName(String name) {
+  public List<Transaction> findByCustomerName(String customerName) {
     EntityManager entityManager = entityManagerFactory.createEntityManager();
     EntityTransaction transaction = entityManager.getTransaction();
     try {
       transaction.begin();
       TypedQuery<Transaction> transactionTypedQuery = entityManager
-              .createQuery("SELECT t FROM Transaction t WHERE t.customerName = :customerName", Transaction.class)
-              .setParameter(1, name);
+              .createQuery("SELECT t FROM Transaction t WHERE t.customerName LIKE :customerName", Transaction.class)
+              .setParameter("customerName", "%"+ customerName + "%");
       List<Transaction> resultList = transactionTypedQuery.getResultList();
       transaction.commit();
       return resultList;
@@ -60,7 +60,7 @@ public class TransactionRepositoryImpl implements TransactionRepository {
     EntityTransaction transaction = entityManager.getTransaction();
     try {
       transaction.begin();
-      TypedQuery<Transaction> transactionTypedQuery = entityManager.createQuery("SELECT t FROM Transaction", Transaction.class);
+      TypedQuery<Transaction> transactionTypedQuery = entityManager.createQuery("SELECT t FROM Transaction t", Transaction.class);
       List<Transaction> resultList = transactionTypedQuery.getResultList();
       transaction.commit();
       return resultList;

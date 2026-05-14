@@ -12,6 +12,7 @@ import com.github.mfthfzn.service.TransactionServiceImpl;
 import com.github.mfthfzn.util.JpaUtil;
 import com.github.mfthfzn.util.ValidatorUtil;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.ConstraintViolation;
@@ -21,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+@WebServlet(urlPatterns = "/api/transactions")
 public class TransactionController extends Controller {
 
   private final TransactionService transactionService =
@@ -36,7 +38,7 @@ public class TransactionController extends Controller {
       String customerName = req.getParameter("name");
       List<TransactionResponse> responses;
 
-      if (customerName != null && !customerName.isEmpty()) {
+      if (customerName != null && !customerName.isBlank()) {
         responses = transactionService.getByCustomerName(customerName);
       } else {
         responses = transactionService.getAll();

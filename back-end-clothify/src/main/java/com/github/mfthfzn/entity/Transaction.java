@@ -23,7 +23,7 @@ public class Transaction {
   @Column(name = "created_at", nullable = false)
   private LocalDateTime createdAt;
 
-  @OneToMany(mappedBy = "transaction", cascade = CascadeType.PERSIST)
+  @OneToMany(mappedBy = "transaction", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
   private final List<TransactionItem> transactionItems = new ArrayList<>();
 
   public Integer getId() {

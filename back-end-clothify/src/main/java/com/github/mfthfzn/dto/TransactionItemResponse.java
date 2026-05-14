@@ -3,9 +3,13 @@ package com.github.mfthfzn.dto;
 public class TransactionItemResponse {
 
   private String productSku;
+
   private String productName;
+
   private Integer price;
+
   private Integer quantity;
+
   private Long subtotal;
 
   public TransactionItemResponse(String productSku, String productName, Integer price, Integer quantity) {

@@ -8,7 +8,7 @@ public interface TransactionRepository {
 
   void insert(Transaction transactionParam);
 
-  List<Transaction> findByCustomerName(String name);
+  List<Transaction> findByCustomerName(String customerName);
 
   List<Transaction> getAll();
 

@@ -1,14 +1,21 @@
 package com.github.mfthfzn.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class TransactionResponse {
 
   private Integer id;
+
   private String customerName;
+
   private String customerPhoneNumber;
+
+  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   private LocalDateTime createdAt;
+
   private List<TransactionItemResponse> transactionItems;
 
   public TransactionResponse() {

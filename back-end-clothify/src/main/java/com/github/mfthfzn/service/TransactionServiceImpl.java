@@ -58,6 +58,8 @@ public class TransactionServiceImpl implements TransactionService {
       transactionItem.setCurrentPrice(product.getPrice());
       transactionItem.setQuantity(itemRequest.getQuantity());
 
+      transactionItem.setTransaction(transaction);
+
       transaction.getTransactionItems().add(transactionItem);
 
     }
