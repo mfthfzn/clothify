@@ -58,13 +58,4 @@ public class Controller extends HttpServlet {
     resp.getWriter().println(objectMapper.writeValueAsString(webResponse));
   }
 
-  protected boolean isParametersValid(String... parameters) {
-    for (String parameter : parameters) {
-      if (parameter.isBlank()) {
-        return false;
-      }
-    }
-    return true;
-  }
-
 }
